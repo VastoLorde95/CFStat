@@ -16,7 +16,7 @@ Implmentation Details:
   
   `end_year` is the year till when you want to fetch submissions
   
-  The arguments of getSubmissions are as follows:
+  The arguments of getSubmissions are as follows
   
     1. `user` = codeforces username
     2. `page_mx` = the maximum number of submission pages you want to anaylze. If you give a number that is greater than the
