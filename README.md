@@ -2,6 +2,7 @@
 A web scraping tool that allows you to perform statistical analysis of your performance on Codeforces
 
 Requirements:
+
 1. Python 2.7.x
 2. Beautiful Soup
 3. requests
