@@ -28,9 +28,9 @@ def getSubmissions(user, page_mx, print_flag = Flag):
   
    row_data =  tr.find_all('td')
   
-   day   = row_data[1].string.strip()
+   day         = row_data[1].string.strip()
    problem_url = row_data[3].a.get('href')
-   verdict  = row_data[5].span.get('submissionverdict')
+   verdict     = row_data[5].span.get('submissionverdict')
 
    date_object = datetime.strptime(day, '%Y-%m-%d %H:%M:%S')
   
@@ -51,7 +51,8 @@ def getWeeklyStatistics(submissions, aggregate = False):
  weeks = {}
  for j in xrange(start_year, end_year+1):
   for i in xrange(1,54):
-   weeks[(i,j)] = {'OK': 0,
+   weeks[(i,j)] = 
+      {'OK': 0,
        'WRONG_ANSWER': 0,
        'CHALLENGED' : 0, 
        'TIME_LIMIT_EXCEEDED' : 0,
@@ -66,7 +67,7 @@ def getWeeklyStatistics(submissions, aggregate = False):
  
  
  for row in submissions:
-  yr   = row[0].isocalendar()[0]
+  yr      = row[0].isocalendar()[0]
   weekno  = row[0].isocalendar()[1]
   weekday = row[0].isocalendar()[2]
   
@@ -98,7 +99,8 @@ def getWeeklyStatistics(submissions, aggregate = False):
    print
    
  if aggregate:
-  aggr = {'OK': 0,
+  aggr = 
+   {'OK': 0,
     'WRONG_ANSWER': 0,
     'CHALLENGED' : 0, 
     'TIME_LIMIT_EXCEEDED' : 0,
