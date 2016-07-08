@@ -18,8 +18,8 @@ Implmentation Details:
   
   The arguments of getSubmissions are as follows
   
-    1. user = codeforces username
-    2. page_mx = the maximum number of submission pages you want to anaylze. If you give a number that is greater than the
-    number of submission pages a user has, then you will get incorrect statisitcs due to overcounting.
-    3. print_flag = say False if you dont want the program to print your submission verdicts (desirable if you have lots of submissions!)
+  1. `user` = codeforces username
+  2. `page_mx` = the maximum number of submission pages you want to anaylze. If you give a number that is greater than the
+  number of submission pages a user has, then you will get incorrect statisitcs due to overcounting.
+  3. `print_flag` = say False if you dont want the program to print your submission verdicts (desirable if you have lots of submissions!)
     
