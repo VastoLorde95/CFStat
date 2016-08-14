@@ -5,9 +5,15 @@ from tabulate import tabulate
 
 ''' Start Code '''
 
+'''
+start_year and end_year are global variables used in getWeeklyStatistics() to generate a table for statistics for each week between start_year to end_year. Modify these according to your needs
+'''
 start_year = 2014
 end_year   = 2016
 
+'''
+Generates a list of all submissions from the first page_mx number of pages made by user and prints this list if print_flag = True. Your submissions will be pushed into a list of 3-tuples: time-stamp of submission, problem code and verdict
+'''
 def getSubmissions(user, page_mx, print_flag = False):
     base_url = 'http://codeforces.com/submissions/' + user + '/page/'
     page_no = 1
@@ -22,7 +28,8 @@ def getSubmissions(user, page_mx, print_flag = False):
 
         data = r.text
         soup = BeautifulSoup(data, 'lxml')
-    
+        
+        # All submissions are in tablerows of HTML
         tablerows = soup.find_all('tr')
         for tr in tablerows:
             if tr.get("data-submission-id") == None: continue
@@ -46,10 +53,15 @@ def getSubmissions(user, page_mx, print_flag = False):
         for row in submissions: print row[0], row[1], row[2]
     
     return submissions
-        
+
+'''
+Using the submissions list generated from the previous function, this generates a table for each week between start_year to end_year with statistics like % of WAs etc. Note: Week no is as per the ISO Calendar
+'''
 def getWeeklyStatistics(user, mx, aggregate = False):
     submissions = getSubmissions(user, mx)
     weeks = {}
+    
+    # Create a weekly statistics table for each week between start_year to end_year
     for j in xrange(start_year, end_year+1):
         for i in xrange(1,54):
             weeks[(i,j)] = {'OK':                     0,
@@ -88,6 +100,7 @@ def getWeeklyStatistics(user, mx, aggregate = False):
                 print 'No submissions in week', i, j 
                 continue
         
+            # Compute Statistics for each week
             table = []
             for key in weeks[(i,j)]:
                 table.append([key, weeks[(i,j)][key], str(100 * weeks[(i,j)][key] / total) + '%'])
@@ -96,7 +109,8 @@ def getWeeklyStatistics(user, mx, aggregate = False):
             print
             print tabulate(table, headers = ["Verdict", "Count", "%"])
             print
-            
+    
+    # aggregate statistics is the table of your overall statistics on CF
     if aggregate:
         aggr = {'OK':                     0,
                 'WRONG_ANSWER':           0,
@@ -128,6 +142,9 @@ def getWeeklyStatistics(user, mx, aggregate = False):
         print tabulate(table, headers = ["Verdict", "Count", "%"])
         print
 
+'''
+Using the first mx1 submissions of user1 and first mx2 pages of user2, this function prints a list of all problems solved by user1 but not by user2
+'''
 def compareUsers(user1, mx1, user2, mx2):
     submission1 = getSubmissions(user1, mx1)
     submission2 = getSubmissions(user2, mx2)
