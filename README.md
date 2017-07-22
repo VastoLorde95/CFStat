@@ -23,3 +23,4 @@ Implmentation Details:
   number of submission pages a user has, then you will get incorrect statisitcs due to overcounting.
   3. `print_flag` = say False if you dont want the program to print your submission verdicts (desirable if you have lots of submissions!)
     
+See `example.py` to learn how to use this package.
