@@ -1,8 +1,11 @@
 # CFStat
-A web scraping tool that allows you to perform statistical analysis of your performance on Codeforces
+A Python module that allows you to perform statistical analysis of your performance on Codeforces. The module provides three main functions:
+
+1. `compareUsers`: Returns a list of all problems that have been solved by you but not by another user
+2. `getSubmissions`: Returns a list of all your submissions over a specific number of pages.
+3. `getWeeklyStatistics` : Tabulates all your submission statistics for each week - reports your acceptance rate, what errors were committed etc
 
 Requirements:
-
 1. Python 2.7.x
 2. Beautiful Soup
 3. requests
@@ -23,4 +26,4 @@ Implmentation Details:
   number of submission pages a user has, then you will get incorrect statisitcs due to overcounting.
   3. `print_flag` = say False if you dont want the program to print your submission verdicts (desirable if you have lots of submissions!)
     
-See `example.py` to learn how to use this package.
+Please refer `example.py` to learn how to use this module.
